@@ -1,6 +1,8 @@
 # develop_study
 개발 공부 프로젝트 모음
-
+## study note
+https://github.com/singingsandhill/develop_study/wiki
+# 수강 강의 목록
 ## jpashop
 **강의명** : 실전! 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발 <br> 
 **플랫폼** : 인프런 <br>
