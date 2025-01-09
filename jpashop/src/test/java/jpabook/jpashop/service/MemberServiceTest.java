@@ -2,6 +2,7 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,10 @@ import static org.junit.Assert.*;
 @Transactional
 public class MemberServiceTest {
 
-    @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     // @Rollback(false) // commit 될 때 쿼리 실행, insert문 실행 안 되고 진행
@@ -34,14 +37,29 @@ public class MemberServiceTest {
         assertEquals(member, memberRepository.findOne(sevedId));
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void 중복_회원_예외() throws Exception {
 
         //given
+        Member member1 = new Member();
+        member1.setName("Gim");
+
+        Member member2 = new Member();
+        member2.setName("Gim");
 
         //when
+        memberService.join(member1);
+        memberService.join(member2);
+
+        // expected = IllegalStateException.class으로 생략
+//        try {
+//            memberService.join(member2); // 중복 오류 발생해야 함
+//        } catch (IllegalStateException e) {
+//            return;
+ //       }
 
         //then
+        fail("예외 발생해야 함");
     }
 
 }
