@@ -4,3 +4,6 @@ springboot_jpa_basic/jpashop/src/main/resources/application.properties
 jpashop/gradle/wrapper/gradle-wrapper.jar
 jpashop/gradle/wrapper/gradle-wrapper.properties
 jpashop/src/main/resources/application.yml
+spring-prepare/gradle/wrapper/gradle-wrapper.jar
+spring-prepare/gradle/wrapper/gradle-wrapper.properties
+spring-prepare/src/main/resources/application.properties
