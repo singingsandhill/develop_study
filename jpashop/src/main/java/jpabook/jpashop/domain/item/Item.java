@@ -45,7 +45,7 @@ public abstract class Item {
      * @param quantity
      */
     public void removeStockQuantity(int quantity) {
-        int restStock = this.stockQuantity -= quantity;
+        int restStock = this.stockQuantity - quantity;
         if (restStock < 0) {
             throw new NoEnoughStockException("need more stock");
 
