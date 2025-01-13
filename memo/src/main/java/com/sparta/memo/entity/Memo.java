@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Memo {
     private Long id;
     private String username;
@@ -20,4 +19,8 @@ public class Memo {
         this.contents = requestDto.getContents();
     }
 
+    public void update(MemoRequestDto requestDto) {
+        this.username = requestDto.getUsername();
+        this.contents = requestDto.getContents();
+    }
 }
