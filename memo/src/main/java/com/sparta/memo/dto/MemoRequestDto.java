@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class MemoRequestDto {
     private String username;
