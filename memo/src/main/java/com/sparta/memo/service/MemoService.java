@@ -33,7 +33,8 @@ public class MemoService {
 
     public List<MemoResponseDto> getMemos() {
         // DB 조회
-        return memoRepository.findAll().stream().map(MemoResponseDto::new).toList();
+        //return memoRepository.findAll().stream().map(MemoResponseDto::new).toList();
+        return memoRepository.findAllByOrderByModifiedAtDesc().stream().map(MemoResponseDto::new).toList();
     }
 
     @Transactional //변경감지를 사용하려면 영속성 컨텍스트가 필요하다 -> transactional 사용
