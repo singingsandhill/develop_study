@@ -1,14 +1,16 @@
-package com.sparta.memo.repsitory;
+package com.sparta.memo.repository;
 
 import com.sparta.memo.dto.MemoRequestDto;
 import com.sparta.memo.dto.MemoResponseDto;
 import com.sparta.memo.entity.Memo;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +88,16 @@ public class MemoRepository {
         } else {
             throw new IllegalArgumentException("선택한 메모는 존재하지 않습니다.");
         }
+    }
+
+    @Transactional
+    public Memo createMemo(EntityManager em) {
+        Memo memo = em.find(Memo.class, 1);
+        memo.setUsername("Robbie");
+        memo.setContents("@Transactional 전파 테스트 중!");
+
+        System.out.println("createMemo 메서드 종료");
+        return memo;
     }
 
     public Memo findById(Long id) {
