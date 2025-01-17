@@ -4,17 +4,19 @@ import com.sparta.memo.dto.MemoRequestDto;
 import com.sparta.memo.dto.MemoResponseDto;
 import com.sparta.memo.entity.Memo;
 import com.sparta.memo.repository.MemoRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class MemoService {
 
-    public final MemoRepository memoRepository;
+    private final MemoRepository memoRepository;
 
+    public MemoService(MemoRepository memoRepository) {
+        this.memoRepository = memoRepository;
+    }
 
     public MemoResponseDto createMemo(MemoRequestDto requestDto) {
         // RequestDto -> Entity
@@ -24,25 +26,40 @@ public class MemoService {
         Memo saveMemo = memoRepository.save(memo);
 
         // Entity -> ResponseDto
-        MemoResponseDto memoResponseDto = new MemoResponseDto(memo);
+        MemoResponseDto memoResponseDto = new MemoResponseDto(saveMemo);
 
         return memoResponseDto;
     }
 
     public List<MemoResponseDto> getMemos() {
-
-        return memoRepository.findAll();
-
+        // DB 조회
+        return memoRepository.findAll().stream().map(MemoResponseDto::new).toList();
     }
 
+    @Transactional //변경감지를 사용하려면 영속성 컨텍스트가 필요하다 -> transactional 사용
     public Long updateMemo(Long id, MemoRequestDto requestDto) {
+        // 해당 메모가 DB에 존재하는지 확인
+//        Memo memo = memoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("선택한 메모 존재하지 않음"));
+        Memo memo = findMemo(id);
+        // memo 내용 수정
+        memo.update(requestDto);
 
-        return memoRepository.update(id, requestDto);
+        return id;
     }
 
     public Long deleteMemo(Long id) {
+        // 해당 메모가 DB에 존재하는지 확인
+        Memo memo = findMemo(id);
 
-        return memoRepository.delete(id);
+        // memo 삭제
+        memoRepository.delete(memo);
+
+        return id;
     }
 
+    private Memo findMemo(Long id) {
+        return memoRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
+        );
+    }
 }
