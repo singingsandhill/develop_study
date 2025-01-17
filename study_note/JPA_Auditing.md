@@ -132,8 +132,6 @@ public class Memo extends Timestamped {
 - **`@MappedSuperclass`, `@EntityListeners(AuditingEntityListener.class)`, `@CreatedDate`, `@LastModifiedDate`** 등을 활용하면 됩니다.
 - 마지막으로 **`@EnableJpaAuditing`**을 꼭 추가해야 Auditing이 활성화된다는 점도 기억하세요.
 
-이처럼 작은 부분이지만, 개발 생산성과 유지보수에 큰 도움이 됩니다. 프로젝트 전체적으로 적용해보면서 더 편리한 개발 경험을 누려보시길 바랍니다!
-
 ---
 
 ### 참고 자료
