@@ -1,5 +1,6 @@
 package com.sparta.springauth.controller;
 
+import com.sparta.springauth.security.UserDetailsImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     @GetMapping("/")
-    public String home(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String home(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model) {
         if (userDetails != null) {
             model.addAttribute("username", userDetails.getUsername());
         }
