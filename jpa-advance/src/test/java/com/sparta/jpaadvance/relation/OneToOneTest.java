@@ -32,7 +32,7 @@ public class OneToOneTest {
         Food food = new Food();
         food.setName("후라이드 치킨");
         food.setPrice(15000);
-        food.setUser(user); // 외래 키(연관 관계) 설정
+//        food.setUser(user); // 외래 키(연관 관계) 설정
 
         userRepository.save(user);
         foodRepository.save(food);
@@ -49,7 +49,7 @@ public class OneToOneTest {
         // 외래 키의 주인이 아닌 User 에서 Food 를 저장해보겠습니다.
         User user = new User();
         user.setName("Robbie");
-        user.setFood(food);
+//        user.setFood(food);
 
         userRepository.save(user);
         foodRepository.save(food);
@@ -69,7 +69,7 @@ public class OneToOneTest {
         // 외래 키(연관 관계) 설정 food.setUser(this); 추가
         User user = new User();
         user.setName("Robbie");
-        user.addFood(food);
+//        user.addFood(food);
 
         userRepository.save(user);
         foodRepository.save(food);
@@ -85,7 +85,7 @@ public class OneToOneTest {
         Food food = new Food();
         food.setName("고구마 피자");
         food.setPrice(30000);
-        food.setUser(user); // 외래 키(연관 관계) 설정
+//        food.setUser(user); // 외래 키(연관 관계) 설정
 
         userRepository.save(user);
         foodRepository.save(food);
@@ -99,7 +99,7 @@ public class OneToOneTest {
         System.out.println("food.getName() = " + food.getName());
 
         // 음식을 주문한 고객 정보 조회
-        System.out.println("food.getUser().getName() = " + food.getUser().getName());
+//        System.out.println("food.getUser().getName() = " + food.getUser().getName());
     }
 
     @Test
@@ -110,9 +110,9 @@ public class OneToOneTest {
         System.out.println("user.getName() = " + user.getName());
 
         // 해당 고객이 주문한 음식 정보 조회
-        Food food = user.getFood();
-        System.out.println("food.getName() = " + food.getName());
-        System.out.println("food.getPrice() = " + food.getPrice());
+//        Food food = user.getFood();
+//        System.out.println("food.getName() = " + food.getName());
+//        System.out.println("food.getPrice() = " + food.getPrice());
     }
 
 
