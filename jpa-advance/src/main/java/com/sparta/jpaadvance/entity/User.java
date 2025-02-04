@@ -17,7 +17,14 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user"
+            , cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
+//            , cascade = CascadeType.PERSIST
+    )
     private List<Food> foodList = new ArrayList<>();
 
+    public void addFoodList(Food food) {
+        this.foodList.add(food);
+        food.setUser(this); // 외래키 설정
+    }
 }
