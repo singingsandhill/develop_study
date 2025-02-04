@@ -15,5 +15,49 @@
 ## spring-prepare
 **강의명** : Spring 입문주차 <br> 
 **플랫폼** : 스파르타코딩클럽 <br>
-**기술스택** : Spring,  <br>
-**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습)
+**기술스택** : Spring Boot  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - spring 기본
+
+## memo
+**강의명** : Spring 입문주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, thymeleaf  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - 간단한 메모앱
+
+## jpa-core
+**강의명** : Spring 입문주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - jpa 기본
+
+## spring-auth
+**강의명** : Spring 숙련주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate, Spring security, JWT  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - security 기본
+
+## spring-resttemplate-server
+**강의명** : Spring 숙련주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - API
+
+## spring-resttemplate-client
+**강의명** : Spring 숙련주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - front 역할 spring으로 구현
+
+## jpa-advance
+**강의명** : Spring 숙련주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - jpa 심화
+
+## myselectshop
+**강의명** : Spring 숙련주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate, Spring security, JWT,thymeleaf  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - 백엔드 구현, naver 쇼핑 API 사용 
+
+
