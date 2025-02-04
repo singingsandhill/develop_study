@@ -18,8 +18,8 @@ public class User {
     private String name;
 
     @OneToMany(mappedBy = "user"
-            , cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
-//            , cascade = CascadeType.PERSIST
+            , cascade = CascadeType.PERSIST, orphanRemoval = true
+//            , cascade = CascadeType.PERSIST, CascadeType.REMOVE
     )
     private List<Food> foodList = new ArrayList<>();
 
