@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "folder")
+@Table(catalog = "shop",name = "folder")
 public class Folder {
 
     @Id
