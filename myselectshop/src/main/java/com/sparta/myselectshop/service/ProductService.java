@@ -29,6 +29,18 @@ public class ProductService {
 
     public static final int MIN_MY_PRICE = 100;
 
+    public Page<ProductResponseDto> getProductsInFolder(Long folderId, int page, int size, String sortBy, boolean isAsc, User user) {
+        Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Page<Product> productList = productRepository.findAllByUserAndProductFolderList_FolderId(user,folderId, pageable);
+
+        Page<ProductResponseDto> responseDtosList = productList.map(ProductResponseDto::new);
+
+        return responseDtosList;
+    }
+
     public ProductResponseDto createProduct(ProductRequestDto productRequestDto, User user) {
         Product product = productRepository.save(new Product(productRequestDto, user));
 
