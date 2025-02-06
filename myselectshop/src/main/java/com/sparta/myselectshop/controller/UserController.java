@@ -10,6 +10,7 @@ import com.sparta.myselectshop.service.FolderService;
 import com.sparta.myselectshop.service.KakaoService;
 import com.sparta.myselectshop.service.UserService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -77,11 +78,12 @@ public class UserController {
         return "index :: #fragment";
     }
 
-    @GetMapping("/iser/kako/callback")
+    @GetMapping("/user/kako/callback")
     public String kakaoLogin(@RequestParam String code, HttpServletResponse response) throws JsonProcessingException {
         String token = kakaoService.kakaoLogin(code);
+        log.error("test2");
 
-        Cookie cookie = new Cookie(JwtUtil.AUTHORIZATION_HEADER, token);
+        Cookie cookie = new Cookie(JwtUtil.AUTHORIZATION_HEADER, token.substring(7));
         cookie.setPath("/");
         response.addCookie(cookie);
 
