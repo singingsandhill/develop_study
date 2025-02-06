@@ -78,10 +78,9 @@ public class UserController {
         return "index :: #fragment";
     }
 
-    @GetMapping("/user/kako/callback")
-    public String kakaoLogin(@RequestParam String code, HttpServletResponse response) throws JsonProcessingException {
+    @GetMapping("/user/kakao/callback")
+    public String kakaoLogin(@RequestParam("code") String code, HttpServletResponse response) throws JsonProcessingException {
         String token = kakaoService.kakaoLogin(code);
-        log.error("test2");
 
         Cookie cookie = new Cookie(JwtUtil.AUTHORIZATION_HEADER, token.substring(7));
         cookie.setPath("/");
