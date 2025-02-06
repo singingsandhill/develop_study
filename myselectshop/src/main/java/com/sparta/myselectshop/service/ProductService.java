@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
+public class ProductService     {
 
     private final ProductRepository productRepository;
     private final FolderRepository folderRepository;
