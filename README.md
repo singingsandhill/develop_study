@@ -54,10 +54,16 @@
 **기술스택** : Spring Boot, JPA, hibernate  <br>
 **프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - jpa 심화
 
-## myselectshop
-**강의명** : Spring 숙련주차 <br> 
+## junit5-practice
+**강의명** : Spring 심화주차 <br> 
 **플랫폼** : 스파르타코딩클럽 <br>
-**기술스택** : Spring Boot, JPA, hibernate, Spring security, JWT,thymeleaf  <br>
-**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - 백엔드 구현, naver 쇼핑 API 사용 
+**기술스택** : junit, mockito  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - junit test
+
+## myselectshop
+**강의명** : Spring 숙련주차, 심화주차 <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, JPA, hibernate, Spring security, JWT, AOP, junit,thymeleaf  <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - 백엔드 구현, naver 쇼핑 API 사용, AOP 적용, junit test, error handling
 
 
