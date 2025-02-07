@@ -4,12 +4,14 @@ import com.sparta.myselectshop.dto.ProductMypriceRequestDto;
 import com.sparta.myselectshop.dto.ProductRequestDto;
 import com.sparta.myselectshop.dto.ProductResponseDto;
 import com.sparta.myselectshop.entity.*;
+import com.sparta.myselectshop.exception.ProductNotFoundException;
 import com.sparta.myselectshop.naver.dto.ItemDto;
 import com.sparta.myselectshop.repository.FolderRepository;
 import com.sparta.myselectshop.repository.ProductFolderRepository;
 import com.sparta.myselectshop.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.boot.model.naming.IllegalIdentifierException;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,15 +19,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService     {
+public class ProductService {
 
     private final ProductRepository productRepository;
     private final FolderRepository folderRepository;
     private final ProductFolderRepository productFolderRepository;
+    private final MessageSource messageSource;
 
     public static final int MIN_MY_PRICE = 100;
 
@@ -34,7 +38,7 @@ public class ProductService     {
         Sort sort = Sort.by(direction, sortBy);
         Pageable pageable = PageRequest.of(page, size, sort);
 
-        Page<Product> productList = productRepository.findAllByUserAndProductFolderList_FolderId(user,folderId, pageable);
+        Page<Product> productList = productRepository.findAllByUserAndProductFolderList_FolderId(user, folderId, pageable);
 
         Page<ProductResponseDto> responseDtosList = productList.map(ProductResponseDto::new);
 
@@ -51,11 +55,19 @@ public class ProductService     {
     public ProductResponseDto updateProduct(Long id, ProductMypriceRequestDto productMypriceRequestDto) {
         int myprice = productMypriceRequestDto.getMyprice();
         if (myprice < MIN_MY_PRICE) {
-            throw new IllegalArgumentException("유효하지 않은 관심 가격. 최소 " + MIN_MY_PRICE + "원 이상으로 입력");
+            throw new IllegalArgumentException(messageSource.getMessage(
+                    "below.min.my.price", new Integer[]{MIN_MY_PRICE},
+                    "Wrong Price",
+                    Locale.getDefault()
+            ));
         }
 
         Product product = productRepository.findById(Math.toIntExact(id)).orElseThrow(() ->
-                new NullPointerException("해당 상품 찾을 수 없음"));
+                new ProductNotFoundException(messageSource.getMessage(
+                        "해당 상품 찾을 수 없음",
+                        null,
+                        "not found product",
+                        Locale.getDefault())));
 
         product.update(productMypriceRequestDto);
 
@@ -104,7 +116,7 @@ public class ProductService     {
         // 중복 확인
         Optional<ProductFolder> overlaFolder = productFolderRepository.findByProductAndFolder(product, folder);
 
-        if (overlaFolder.isPresent()){
+        if (overlaFolder.isPresent()) {
             throw new IllegalIdentifierException("중복된 폴더입니다.");
         }
 
