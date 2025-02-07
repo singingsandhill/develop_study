@@ -18,17 +18,17 @@ public class FolderService {
 
     public void addFolders(List<String> folderNames, User user) {
 
-        List<Folder> existFolderList = folderRepository.findAllByUserAndNameIn(user,folderNames);
+        List<Folder> existFolderList = folderRepository.findAllByUserAndNameIn(user, folderNames);
         // select * from folder where user_id = ? and name in (?, ?, ?);
 
         List<Folder> folderList = new ArrayList<>();
 
-        for (String folderName: folderNames) {
-            if(!isExistFolderName(folderName, existFolderList)){
-                Folder folder = new Folder(folderName,user);
+        for (String folderName : folderNames) {
+            if (!isExistFolderName(folderName, existFolderList)) {
+                Folder folder = new Folder(folderName, user);
                 folderList.add(folder);
             } else {
-                throw new IllegalArgumentException("폴더명 중복");
+                throw new IllegalArgumentException("중복된 폴더를 제거해 주세요. 폴더명 : " + folderName);
             }
         }
 
@@ -49,7 +49,7 @@ public class FolderService {
 
     private boolean isExistFolderName(String folderName, List<Folder> existFolderList) {
         for (Folder existFolder : existFolderList) {
-            if(folderName.equals(existFolder.getName())){
+            if (folderName.equals(existFolder.getName())) {
                 return true;
             }
         }
