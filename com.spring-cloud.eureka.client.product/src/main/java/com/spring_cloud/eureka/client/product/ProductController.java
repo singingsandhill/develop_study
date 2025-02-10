@@ -11,8 +11,13 @@ public class ProductController {
     @Value("${server.port}")
     private String port;
 
-    @GetMapping("/product/{id}")
-    public String getProduct(@PathVariable("id") int id) {
-        return "Product " + id + " ifno From port : " + port ;
+//    @GetMapping("/product/{id}")
+    @GetMapping("/product")
+    public String getProduct(
+//            @PathVariable("id") int id
+    ) {
+        return
+//                "Product " + id+
+                " info From port : " + port ;
     }
 }
