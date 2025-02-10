@@ -66,4 +66,14 @@
 **기술스택** : Spring Boot, JPA, hibernate, Spring security, JWT, AOP, junit,thymeleaf  <br>
 **프로젝트 내용** : 내일배움캠프 자바 심화과정 사전 교육(복습) - 백엔드 구현, naver 쇼핑 API 사용, AOP 적용, junit test, error handling
 
+## com.spring-cloud.eureka.client.server, first, second, product, order
+**강의명** : [JAVA단기심화] MSA(Microservice Architecture)  <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, spring-cloud, eureka-server, eureka-client, feign <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 - MSA 기초
 
+## com.spring-cloud.resilience4j.sample
+**강의명** : [JAVA단기심화] MSA(Microservice Architecture)  <br> 
+**플랫폼** : 스파르타코딩클럽 <br>
+**기술스택** : Spring Boot, resilience4j, prometheus, actuator <br>
+**프로젝트 내용** : 내일배움캠프 자바 심화과정 - MSA 기초, 오류 처리, 모니터링링
