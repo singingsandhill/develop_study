@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.2'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'war'
 }
 
 group = 'com.spring-cloud.eureka.client'
@@ -29,13 +30,16 @@ ext {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+	implementation 'io.github.openfeign:feign-micrometer'
+	implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
