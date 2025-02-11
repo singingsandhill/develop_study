@@ -13,8 +13,8 @@ public class ProductController {
     @Value("${server.port}")
     private String port;
 
-    @Value("${message}")
-    private String message;
+//    @Value("${message}")
+//    private String message;
 
 //    @GetMapping("/product/{id}")
     @GetMapping("/product")
@@ -23,6 +23,8 @@ public class ProductController {
     ) {
         return
 //                "Product " + id+
-                " info From port : " + port + " and message : " + message ;
+                " info From port : " + port
+//                        + " and message : " + message
+                        ;
     }
 }
