@@ -31,7 +31,7 @@ public class OrderController {
         return orderRepository.findById(id).orElseThrow();
     }
 
-    @PutMapping("{id")
+    @PutMapping("{id}")
     public ItemOrder update(@PathVariable("id") String id, @RequestBody ItemOrder order){
         return null;
     }

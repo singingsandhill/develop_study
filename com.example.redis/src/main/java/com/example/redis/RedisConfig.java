@@ -25,4 +25,9 @@ public class RedisConfig {
 
         return template;
     }
+
+    @Bean
+    public RedisSerializer<Object> springSessionDefaultRedisSerializer(){
+        return RedisSerializer.json();
+    }
 }
