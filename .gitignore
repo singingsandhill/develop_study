@@ -7,3 +7,5 @@ jpashop/src/main/resources/application.yml
 spring-prepare/gradle/wrapper/gradle-wrapper.jar
 spring-prepare/gradle/wrapper/gradle-wrapper.properties
 spring-prepare/src/main/resources/application.properties
+aiPractice/build/libs/aiPractice-0.0.1-SNAPSHOT.jar
+aiPractice/build/libs/aiPractice-0.0.1-SNAPSHOT-plain.jar

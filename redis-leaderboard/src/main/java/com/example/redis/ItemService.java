@@ -12,6 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 @Slf4j
 @Service
 public class ItemService {
@@ -39,6 +43,12 @@ public class ItemService {
                 .build());
         ItemDto dto = ItemDto.fromEntity(item);
         rankOps.incrementScore("soldRanks", dto, 1);
+    }
+
+    public List<ItemDto> getMostSold(){
+        Set<ItemDto> ranks = rankOps.reverseRange("soldRanks",0,9);
+        if(ranks == null) return Collections.emptyList();
+        return ranks.stream().toList();
     }
 
 }
