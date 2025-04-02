@@ -1,0 +1,7 @@
+docker run --name loki -d `
+  -v "${PWD}:/mnt/config" `
+  -p 3100:3100 `
+  grafana/loki:2.9.7 `
+  "-config.file=/mnt/config/loki-config.yml"
+
+docker rm -f loki
