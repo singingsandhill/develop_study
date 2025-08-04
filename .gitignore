@@ -44,3 +44,92 @@ bin/
 # 만약 특정 환경에서만 로컬 설정을 다르게 한다면 아래는 유지할 수도 있음
 # application.properties
 # application.yml
+
+# =====================
+# ✅ Python / Django 프로젝트
+# =====================
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django migration files
+**/migrations/
+!**/migrations/__init__.py
+
+# SQLite DB (선택)
+*.sqlite3
+
+# Environment / virtualenv
+.env/
+.venv/
+venv/
+ENV/
+env/
+*.env
+*.env.*
+
+# pip files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyCharm
+.idea/
+
+# Coverage & testing
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook (선택)
+.ipynb_checkpoints/
+
+# Local settings
+local_settings.py
+
+# Static files (collected)
+staticfiles/
+static/
+
+# Media files (uploaded by users)
+media/
+
+# Gunicorn/PID/runtime files
+*.pid
+*.pid.lock
+
+# MyPy / typing
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Pyre
+.pyre/
+
+# Celery / flower
+celerybeat-schedule
+celerybeat.pid
+
+# VSCode
+.vscode/
+
+# Custom Python virtualenv
+.django/
+.hello_world/
+.hacker_news/
