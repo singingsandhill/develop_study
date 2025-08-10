@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import render, get_object_or_404
-from flask import redirect
-
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
+from django.db.models import F
 from post.forms import PostForm
 from post.models import Post
 
@@ -10,13 +10,20 @@ from post.models import Post
 # def index_view(request):
 #    return HttpResponse("Hello, Hackers!")
 
-def posts_views(request):
-    if request.method == 'GET':
+class PostListView(View):
+
+    def get(self, request):
         posts = Post.objects.all()
-        context = {'posts': posts, "form": PostForm}
+        context = {'posts': posts}
         result = ", ".join([p.title for p in posts])
         return render(request, 'post_list.html', context)
-    elif request.method == 'POST':
+
+class PostCreateView(View):
+    def get(self,request):
+        context = {"form": PostForm}
+        return render(request, "post_create.html", context)
+
+    def post(self, request):
         form = PostForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
@@ -39,13 +46,21 @@ def posts_views(request):
 
             return render(request, 'post_detail.html', context)
 
-        #posts = Post.objects.all()
-        #context = {'posts': posts, "form": PostForm}
-        #return render(request, 'post_list.html', context)
+        # posts = Post.objects.all()
+        # context = {'posts': posts, "form": PostForm}
+        # return render(request, 'post_list.html', context)
         return redirect('posts')
 
+class PostDetailView(View):
+    def get(self,request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        context = {"post": post}
+        return render(request, "post_detail.html", context)
 
-def post_view(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    context = {"post": post}
-    return render(request, "post_detail.html", context)
+class PostLikeView(View):
+    def post(self,request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        post.points = F("points") + 1
+        post.save()
+        post.refresh_from_db()
+        return render(request, "post_detail.html", {"post": post})

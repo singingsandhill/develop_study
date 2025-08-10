@@ -1,40 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h2>게시글 목록</h2>
-    {% if posts %}
-        <ul>
-            {% for post in posts %}
-                <li>
-                    <a href="{% url 'post' post.id %}">{{ post.title}}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p> No Posts!</p>
-    {% endif %}
+{% extends 'base.html' %}
+{% block content %}
+<h2>게시글 목록</h2>
+{% if posts %}
+    <ol type="1">
+        {% for post in posts %}
+        <li>
+            <a href="{% url 'post' post.id %}">{{ post.title}}</a>
+        </li>
+        {% endfor %}
+    </ol>
+{% else %}
+<p> No Posts!</p>
+{% endif %}
 
-    <hr>
-
-    <form action="{% url 'posts' %}" method="post">
-        {% csrf_token %}
-        <h2>새로운 게시글 작성</h2>
-        <!--<label for="title">제목</label>
-        <input type="text" id="title" name="title" autocomplete="off" required>
-
-        <label for="body">본문</label>
-        <input type="text" id="body" name="body" autocomplete="off" required>
-
-        <label for="author_name">작성자</label>
-        <input type="text" id="author_name" name="author_name" autocomplete="off" required> -->
-
-        {{ form }}
-
-        <input type="submit" value="작성">
-    </form>
-</body>
-</html>
+{% endblock %}
