@@ -133,3 +133,4 @@ celerybeat.pid
 .django/
 .hello_world/
 .hacker_news/
+django/ch3/.auth_user/
